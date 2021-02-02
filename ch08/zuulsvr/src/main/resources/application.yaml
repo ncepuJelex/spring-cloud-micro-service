@@ -1,0 +1,54 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 5555
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - health
+        - info
+        - env
+        - refresh
+        - routes
+
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.jel.tech.ch02: DEBUG
+#因为使用了config server github中的配置，所以下面注释掉
+#zuul:
+#  routes:
+#    organizationservice: /org/**
+#    licensingservice: /license/**
+    #静态路由（比如不受eureka管理注册的服务，非jvm服务，比如python写的），但是这样有单点故障问题，你可以禁用ribbon和eureka的整合，然后自己配置服务列表，
+    # 但是，自己配置的话，其它整个服务也无法使用eureka了，所以可以把非jvm的服务抽取出来，配置 a Spring Cloud “Sidecar” instance
+#    licensestatic:
+#      path: /licensestatic/**
+#      url:  http://licenseservice-static:8082
+
+
+#    licensestatic:
+#      path: /licensestatic/**
+#      serviceId: licensestatic
+#ribbon:
+#  eureka:
+#    enabled: false
+#licensestatic:
+#  ribbon:
+#    listOfServers: http://licenseservice-static1:8081, http://licenseservice-static2:8082
+
+#  ignored-services: 'organizationservice' #zuul自动mapping的这一个url禁掉，可以用英文逗号隔开，禁用多个服务。If you want to exclude all Eureka-based routes, you can set the ignored-services attribute to “*”
+#  prefix: /api # A common pattern with a service gateway is to differentiate API routes vs. content routes by prefixing all your service calls with a type of label such as /api
+

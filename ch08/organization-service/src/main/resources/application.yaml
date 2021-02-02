@@ -1,0 +1,34 @@
+
+spring:
+  profiles:
+    active: default
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8888
+#    stream:
+#      bindings:
+#        output:
+#          destination: orgChangeTopic
+#          content-type: application/json
+#      kafka:
+#        binder:
+#          zkNodes: 47.97.104.192
+#          brokers: 47.97.104.192
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8081
+
+kafka:
+  bootstrap:
+    servers: 47.97.104.192:9092
+  topic:
+    org: orgChangeTopic

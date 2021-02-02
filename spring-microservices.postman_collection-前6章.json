@@ -1,0 +1,698 @@
+{
+	"info": {
+		"_postman_id": "90eb0b65-d7b0-471f-802f-3969836dde16",
+		"name": "spring-microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ch02-获取licences",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/org/jel/licenses/db0e459b-7204-4cf6-b249-8a55d1342667",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"org",
+						"jel",
+						"licenses",
+						"db0e459b-7204-4cf6-b249-8a55d1342667"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch02-查询health check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/actuator/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch03-获取active为default的config server配置",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/licensingservice/default",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"licensingservice",
+						"default"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch03-获取active为dev的config server配置文件内容",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/licensingservice/dev",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"licensingservice",
+						"dev"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch03-获取active为prod的config server配置文件内容",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/licensingservice/prod",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"licensingservice",
+						"prod"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch03-获取env",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/actuator/env",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actuator",
+						"env"
+					]
+				},
+				"description": "部分env内容是从configsvr中拿过来的"
+			},
+			"response": []
+		},
+		{
+			"name": "ch03-接口调用获取config信息",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/org/jel/licenses/config",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"org",
+						"jel",
+						"licenses",
+						"config"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch03-保存license",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"organizationId\" : \"jel\",\n\t\"productName\": \"iPhone12 mini\",\n\t\"licenseType\": \"elec\",\n\t\"comment\":\"you be good, aliman\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/org/jel/licenses/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"org",
+						"jel",
+						"licenses",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch03-获取一个org下的所有licenses",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "tmx-correlation-id",
+						"value": "CORRELATION_ID",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/org/jel/licenses/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"org",
+						"jel",
+						"licenses",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch03-获取organizationservice.yaml本地化配置内容",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8888/organizationservice/default",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"organizationservice",
+						"default"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch03-git更改配置内容后，refresh配置信息",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/actuator/refresh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"actuator",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch03-encrypt密码",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "2nByOE*gr8HDz4L!"
+				},
+				"url": {
+					"raw": "http://localhost:8888/encrypt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"encrypt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch03-decrypt密文",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "e02283344d96461076e800d66ae4759cf25605e54d65fe98acca6c0baf79fcd79a3fb791cf15b93e29c336071a05a9b6"
+				},
+				"url": {
+					"raw": "http://localhost:8888/decrypt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"decrypt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch04-licensing-service查看注册在eurkea-server上的registry",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8761/eureka/apps/licensingservice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8761",
+					"path": [
+						"eureka",
+						"apps",
+						"licensingservice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch04-查看organizationservice在eureka-server上的registry",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8761/eureka/apps/organizationservice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8761",
+					"path": [
+						"eureka",
+						"apps",
+						"organizationservice"
+					]
+				},
+				"description": "返回json格式数据（通过Accept头）"
+			},
+			"response": []
+		},
+		{
+			"name": "ch04-保存org",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"名\",\n\t\"contactName\":\"酸suan\",\n\t\"contactEmail\":\"huadianshiyan@163.com\",\n\t\"contactPhone\":\"119\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/organizations/jel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"organizations",
+						"jel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch04-license调用org微服务-rest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/org/jel/licenses/671a22d4-9e5d-4ca5-a5ac-83614b735e1a/rest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"org",
+						"jel",
+						"licenses",
+						"671a22d4-9e5d-4ca5-a5ac-83614b735e1a",
+						"rest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch04-license调用org微服务-discovery",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/org/jel/licenses/671a22d4-9e5d-4ca5-a5ac-83614b735e1a/discovery",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"org",
+						"jel",
+						"licenses",
+						"671a22d4-9e5d-4ca5-a5ac-83614b735e1a",
+						"discovery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch04-license调用org微服务-feign",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/org/jel/licenses/671a22d4-9e5d-4ca5-a5ac-83614b735e1a/feign",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"org",
+						"jel",
+						"licenses",
+						"671a22d4-9e5d-4ca5-a5ac-83614b735e1a",
+						"feign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch06-查询zuul的routes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5555/actuator/routes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"actuator",
+						"routes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ch06-通过zuul访问org服务",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "tmx-correlation-id",
+						"value": "CORRELATION_ID",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/organization/v1/organizations/jel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"organization",
+						"v1",
+						"organizations",
+						"jel"
+					]
+				},
+				"description": "url中: org 映射成 organizationservice.\n使用prefix: /api"
+			},
+			"response": []
+		},
+		{
+			"name": "ch06-测试traceId传递",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/licensing//v1/org/jel/licenses/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"licensing",
+						"",
+						"v1",
+						"org",
+						"jel",
+						"licenses",
+						""
+					]
+				},
+				"description": "zuul->licensing-service"
+			},
+			"response": []
+		},
+		{
+			"name": "ch06-测试traceId传递",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/licensing//v1/org/jel/licenses/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"licensing",
+						"",
+						"v1",
+						"org",
+						"jel",
+						"licenses",
+						""
+					]
+				},
+				"description": "zuul->licensing-service\n\n响应头也多了一个correlation-id, 多亏了 zuul 的post filter"
+			},
+			"response": []
+		},
+		{
+			"name": "ch06-测试traceId的传递性（完整）",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/licensing//v1/org/jel/licenses/671a22d4-9e5d-4ca5-a5ac-83614b735e1a/rest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"licensing",
+						"",
+						"v1",
+						"org",
+						"jel",
+						"licenses",
+						"671a22d4-9e5d-4ca5-a5ac-83614b735e1a",
+						"rest"
+					]
+				},
+				"description": "zuul->licensing-service->organization-service.\n\n再查看response header,多了一项我们设置的 correlation-id"
+			},
+			"response": []
+		},
+		{
+			"name": "ch06-测试ab-test,一半转新服务，一半老服务",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5555/api/organization/v1/organizations/jel",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5555",
+					"path": [
+						"api",
+						"organization",
+						"v1",
+						"organizations",
+						"jel"
+					]
+				},
+				"description": "zuul -> 调用specialroutesservice服务查询是否需要转新服务\n  -> 相应的调用新/老 服务，通过返回数据中的 contantName 是否以NEW::开头来区分调用的是新还是老服务"
+			},
+			"response": []
+		}
+	]
+}

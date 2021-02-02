@@ -1,0 +1,18 @@
+server:
+  port: 8888
+spring:
+  profiles:
+#    active: native  #对应下面注释掉的本地配置file文件使用
+    active: default
+  cloud:
+    config:
+      server:
+        encrypt:
+          enabled: false #禁止server端解密配置密文
+        git:
+          uri: https://github.com/ncepuJelex/config-repo.git
+          search-paths: licensingservice,organizationservice,zuulservice,specialroutesservice,orgnew
+          username: ncepuJelex
+          password: hengJelex12345
+#        native:
+#          search-locations: file:///C:/D/codes/spring_microservices/configsvr/src/main/resources/config/licensingservice,file:///C:/D/codes/spring_microservices/configsvr/src/main/resources/config/organizationservice
